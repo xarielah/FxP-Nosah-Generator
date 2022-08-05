@@ -20,12 +20,14 @@ function App() {
     const setUser = (str) => setWeeklyUser(str);
     const setThread = (str) => setWeeklyThread(str);
 
-    console.log(stage);
-
     return (
         <Container>
             <Flex flexDirection='column' gap={10} my={5}>
-                <PickForum inc={inc} setter={(data) => setForum(data)} />
+                <PickForum
+                    forum={forum}
+                    inc={inc}
+                    setter={(data) => setForum(data)}
+                />
                 {stage === 1 && (
                     <PickUsers
                         inc={inc}

@@ -1,7 +1,7 @@
 import { Box, Select } from '@chakra-ui/react';
 import forums from '../../data/forums';
 
-const PickForum = ({ setter, inc }) => {
+const PickForum = ({ setter, inc, forum }) => {
     const onchange = (value) => {
         const id = parseInt(value);
         const forum = forums.filter((item) => item.id === id)[0];
@@ -12,7 +12,7 @@ const PickForum = ({ setter, inc }) => {
     return (
         <Box>
             <Select onChange={(e) => onchange(e.target.value)}>
-                <option value={0}>בחר פורום מהרשימה</option>
+                {!forum && <option value={0}>בחר פורום מהרשימה</option>}
                 {forums.map((forum, index) => (
                     <option key={index} value={forum.id}>
                         {forum.name}
