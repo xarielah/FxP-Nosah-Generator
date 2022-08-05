@@ -23,12 +23,14 @@ function App() {
     return (
         <Container>
             <Flex flexDirection='column' gap={10} my={5}>
-                <PickForum
-                    forum={forum}
-                    inc={inc}
-                    setter={(data) => setForum(data)}
-                    stage={stage}
-                />
+                {stage !== 2 && (
+                    <PickForum
+                        forum={forum}
+                        inc={inc}
+                        setter={(data) => setForum(data)}
+                        stage={stage}
+                    />
+                )}
                 {stage === 1 && (
                     <PickUsers
                         inc={inc}
