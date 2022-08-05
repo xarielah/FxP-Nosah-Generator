@@ -1,12 +1,12 @@
 import { Box, Select } from '@chakra-ui/react';
 import forums from '../../data/forums';
 
-const PickForum = ({ setter, inc, forum }) => {
+const PickForum = ({ setter, inc, forum, stage }) => {
     const onchange = (value) => {
         const id = parseInt(value);
         const forum = forums.filter((item) => item.id === id)[0];
         setter(forum);
-        inc();
+        if (stage === 0) inc();
     };
 
     return (

@@ -27,6 +27,7 @@ function App() {
                     forum={forum}
                     inc={inc}
                     setter={(data) => setForum(data)}
+                    stage={stage}
                 />
                 {stage === 1 && (
                     <PickUsers
