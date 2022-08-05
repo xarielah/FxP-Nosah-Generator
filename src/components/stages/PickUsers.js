@@ -95,7 +95,7 @@ const PickUsers = ({ setUser, setThread, inc }) => {
                 <Divider my={4} />
                 <Flex flexDirection='column' gap={6}>
                     <Wrap justify='space-between'>
-                        <Text>האם היה משקיען השבוע?</Text>
+                        <Text>האם היה אשכול השבוע?</Text>
                         <Switch
                             isInvalid={errors.thread}
                             onChange={(e) => {
