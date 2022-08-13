@@ -1,4 +1,5 @@
-import { Box, Select } from '@chakra-ui/react';
+import { Box, Select, Image, Heading, Text } from '@chakra-ui/react';
+import logo from '../../images/logo.png';
 import forums from '../../data/forums';
 
 const PickForum = ({ setter, inc, forum, stage }) => {
@@ -11,7 +12,23 @@ const PickForum = ({ setter, inc, forum, stage }) => {
 
     return (
         <Box>
-            <Select onChange={(e) => onchange(e.target.value)}>
+            <Box align='center' mt={3}>
+                <Image
+                    src={logo}
+                    bg='#333333'
+                    maxW='400px'
+                    p={3}
+                    borderRadius='md'
+                    alt='category logo'
+                />
+            </Box>
+            <Heading align='center' mt={3} size='lg' color={'messenger.500'}>
+                מחולל נוסח משקיען ואשכול השבוע
+            </Heading>
+            <Text align='center' fontWeight='bold'>
+                קטגוריית משחקי פעולה
+            </Text>
+            <Select my={4} onChange={(e) => onchange(e.target.value)}>
                 {!forum && <option value={0}>בחר פורום מהרשימה</option>}
                 {forums.map((forum, index) => (
                     <option key={index} value={forum.id}>

@@ -1,14 +1,4 @@
-import {
-    Box,
-    Container,
-    Image,
-    Heading,
-    Divider,
-    Text,
-    Link,
-    Flex,
-} from '@chakra-ui/react';
-import logo from '../../images/logo.png';
+import { Box, Container, Divider, Text, Link, Flex } from '@chakra-ui/react';
 
 const MainLayout = ({ children }) => {
     return (
@@ -31,31 +21,25 @@ const MainLayout = ({ children }) => {
                     padding: '2em 0',
                 }}
             >
-                <Box align='center' mt={3}>
-                    <Image
-                        src={logo}
-                        bg='gray.200'
-                        maxW='400px'
-                        p={3}
-                        borderRadius='md'
-                        alt='category logo'
-                    />
-                </Box>
-                <Heading align='center' mt={3} size='lg' color='cyan.400'>
-                    מחולל נוסח משקיען ואשכול השבוע
-                </Heading>
-                <Text align='center' fontWeight='bold'>
-                    קטגוריית משחקי פעולה
-                </Text>
                 {children}
             </Container>
-            <Box w='100%' mb={10}>
-                <Divider my={4} />
+            <Box
+                w='100%'
+                mb={10}
+                bg={'#333333'}
+                p={10}
+                position={'absolute'}
+                top={'88vh'}
+            >
                 <Text
                     align={'center'}
-                    fontStyle='italic'
-                    fontWeight={'medium'}
-                    color='gray.300'
+                    fontWeight={'bold'}
+                    bg='white'
+                    w='max-content'
+                    margin='0 auto'
+                    py={2}
+                    px={4}
+                    borderRadius={'md'}
                 >
                     נבנה על ידי{' '}
                     <Link
@@ -64,7 +48,7 @@ const MainLayout = ({ children }) => {
                         color='#0000ff'
                         href='https://www.fxp.co.il/member.php?u=749522'
                     >
-                        Middleware
+                        Tony Black
                     </Link>{' '}
                     - אריאל
                 </Text>

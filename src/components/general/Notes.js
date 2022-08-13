@@ -1,17 +1,56 @@
-import { Box, Text, Heading, OrderedList, ListItem } from '@chakra-ui/react';
+import {
+    Box,
+    Button,
+    Heading,
+    OrderedList,
+    ListItem,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalCloseButton,
+    ModalFooter,
+    ModalBody,
+    Text,
+} from '@chakra-ui/react';
 
-const Notes = () => {
+const Notes = ({ close }) => {
     return (
         <Box mb={10} textAlign='center'>
-            <Heading color='cyan.400' size='lg'>
-                לא לשכוח:
-            </Heading>
-            <OrderedList>
-                <ListItem>לשלוח הודעה פרטית לזוכים באתגר.</ListItem>
-                <ListItem>
-                    לעדכן את המפקח בקישור ההכרזה באשכול הרלוונטי לכך.
-                </ListItem>
-            </OrderedList>
+            <Modal isOpen onClose={close}>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>עדיין לא סיימתם {':)'}</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody textAlign={'center'}>
+                        <Heading color={'messenger.500'} size='lg' my={4}>
+                            לא לשכוח:
+                        </Heading>
+                        <OrderedList>
+                            <ListItem>לשלוח הודעה פרטית לזוכים באתגר.</ListItem>
+                            <ListItem>
+                                לעדכן את המפקח בקישור ההכרזה באשכול הרלוונטי
+                                לכך.
+                            </ListItem>
+                        </OrderedList>
+                        <Text
+                            fontWeight={'bold'}
+                            color={'red'}
+                            mt={5}
+                            textDecoration={'underline'}
+                        >
+                            לנוחיותכם מצורפים קישורים לאשכול דיון על הזוכים +
+                            אתגר בפורום שלכם.
+                        </Text>
+                    </ModalBody>
+
+                    <ModalFooter>
+                        <Button colorScheme='red' mr={3} onClick={close}>
+                            סגור חלון
+                        </Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
         </Box>
     );
 };

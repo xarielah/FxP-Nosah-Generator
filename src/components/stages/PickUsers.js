@@ -6,13 +6,14 @@ import {
     Wrap,
     Divider,
     Flex,
-    Box,
     Button,
 } from '@chakra-ui/react';
+import PreviewForum from './PreviewForum';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
-const PickUsers = ({ setUser, setThread, inc }) => {
+const PickUsers = ({ setUser, setThread, inc, dec, forum }) => {
+    console.log(forum);
     const [wasThereAUser, setWasThereAUser] = useState(false);
     const [wasThereAThread, setWasThereAThread] = useState(false);
     const {
@@ -41,10 +42,11 @@ const PickUsers = ({ setUser, setThread, inc }) => {
         inc();
     };
     const linkRegex =
-        /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
+        /[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_.~#?&//=]*)?/gi;
 
     return (
         <Container>
+            <PreviewForum forum={forum} />
             <form onSubmit={handleSubmit(onsubmit)}>
                 <Flex flexDirection='column' gap={6}>
                     <Wrap justify='space-between'>
@@ -138,18 +140,19 @@ const PickUsers = ({ setUser, setThread, inc }) => {
                             />
                         </Wrap>
                     )}
-                    <Box textAlign='center'>
+                    <Wrap justify='center'>
+                        <Button onClick={dec} size='sm' colorScheme={'red'}>
+                            חזור אחורה
+                        </Button>
                         <Button
                             type='submit'
                             isDisabled={Object.keys(errors).length > 0}
                             size='sm'
-                            bg={'cyan.400'}
-                            color={'white'}
-                            margin='0 auto'
+                            colorScheme={'messenger'}
                         >
                             קבל קוד
                         </Button>
-                    </Box>
+                    </Wrap>
                 </Flex>
             </form>
         </Container>
