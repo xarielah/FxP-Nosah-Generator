@@ -3,6 +3,7 @@ import Notes from '../general/Notes';
 import getBBCode from '../../data/getBBCode';
 import { useState } from 'react';
 import PreviewForum from './PreviewForum';
+import PmUsers from './PmUsers';
 
 const ShowCode = ({ weeklyUser, weeklyThread, forum }) => {
     const [isOpen, setOpen] = useState(true);
@@ -18,6 +19,13 @@ const ShowCode = ({ weeklyUser, weeklyThread, forum }) => {
             {isOpen && <Notes close={close} />}
             <PreviewForum forum={forum} />
             <Box align='center'>
+                {weeklyThread.length > 0 ||
+                    (weeklyUser.length > 0 && (
+                        <PmUsers
+                            weeklyUser={weeklyUser}
+                            weeklyThread={weeklyThread}
+                        />
+                    ))}
                 <Button
                     mb={3}
                     size='sm'

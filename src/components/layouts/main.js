@@ -1,4 +1,5 @@
-import { Box, Container, Divider, Text, Link, Flex } from '@chakra-ui/react';
+import { Box, Container, Text, Link, Flex } from '@chakra-ui/react';
+import Updates from '../general/Updates';
 
 const MainLayout = ({ children }) => {
     return (
@@ -22,6 +23,7 @@ const MainLayout = ({ children }) => {
                 }}
             >
                 {children}
+                <Updates />
             </Container>
             <Box
                 w='100%'

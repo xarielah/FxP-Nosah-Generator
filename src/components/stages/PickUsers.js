@@ -13,7 +13,6 @@ import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
 const PickUsers = ({ setUser, setThread, inc, dec, forum }) => {
-    console.log(forum);
     const [wasThereAUser, setWasThereAUser] = useState(false);
     const [wasThereAThread, setWasThereAThread] = useState(false);
     const {
@@ -27,17 +26,18 @@ const PickUsers = ({ setUser, setThread, inc, dec, forum }) => {
             userLink: '',
             thread: '',
             threadLink: '',
+            threadUser: '',
         },
     });
 
     const onsubmit = (data) => {
-        const { user, userLink, thread, threadLink } = data;
-        console.log(data);
+        const { user, userLink, thread, threadLink, threadUser } = data;
+
         if (wasThereAUser) {
             setUser([user, userLink]);
         }
         if (wasThereAThread) {
-            setThread([thread, threadLink]);
+            setThread([thread, threadLink, threadUser]);
         }
         inc();
     };
@@ -135,6 +135,21 @@ const PickUsers = ({ setUser, setThread, inc, dec, forum }) => {
                                         {...field}
                                         isInvalid={errors.threadLink}
                                         placeholder='קישור לאשכול...'
+                                    />
+                                )}
+                            />
+                            <Controller
+                                control={control}
+                                name='threadUser'
+                                rules={{
+                                    pattern: linkRegex,
+                                    required: wasThereAThread,
+                                }}
+                                render={({ field }) => (
+                                    <Input
+                                        {...field}
+                                        isInvalid={errors.threadUser}
+                                        placeholder='קישור למשתמש פותח האשכול...'
                                     />
                                 )}
                             />
