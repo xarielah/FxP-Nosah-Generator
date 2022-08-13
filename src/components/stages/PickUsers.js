@@ -41,8 +41,9 @@ const PickUsers = ({ setUser, setThread, inc, dec, forum }) => {
         }
         inc();
     };
-    const linkRegex =
-        /[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_.~#?&//=]*)?/gi;
+    const threadRegex =
+        /^https:\/\/www\.fxp\.co\.il(\/(showthread\.php)?(\?.*)?)?$/;
+    const userRegex = /^https:\/\/www\.fxp\.co\.il(\/(member\.php)?(\?.*)?)?$/;
 
     return (
         <Container>
@@ -79,7 +80,7 @@ const PickUsers = ({ setUser, setThread, inc, dec, forum }) => {
                                     control={control}
                                     name='userLink'
                                     rules={{
-                                        pattern: linkRegex,
+                                        pattern: userRegex,
                                         required: wasThereAUser,
                                     }}
                                     render={({ field }) => (
@@ -127,7 +128,7 @@ const PickUsers = ({ setUser, setThread, inc, dec, forum }) => {
                                 control={control}
                                 name='threadLink'
                                 rules={{
-                                    pattern: linkRegex,
+                                    pattern: threadRegex,
                                     required: wasThereAThread,
                                 }}
                                 render={({ field }) => (
@@ -142,7 +143,7 @@ const PickUsers = ({ setUser, setThread, inc, dec, forum }) => {
                                 control={control}
                                 name='threadUser'
                                 rules={{
-                                    pattern: linkRegex,
+                                    pattern: userRegex,
                                     required: wasThereAThread,
                                 }}
                                 render={({ field }) => (
