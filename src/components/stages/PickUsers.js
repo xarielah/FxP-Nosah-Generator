@@ -18,7 +18,7 @@ const PickUsers = ({ setUser, setThread, inc, dec, forum }) => {
     const {
         control,
         handleSubmit,
-        reset,
+        resetField,
         formState: { errors },
     } = useForm({
         defaultValues: {
@@ -56,7 +56,8 @@ const PickUsers = ({ setUser, setThread, inc, dec, forum }) => {
                         <Switch
                             onChange={(e) => {
                                 setWasThereAUser(e.target.checked);
-                                reset();
+                                resetField('user');
+                                resetField('userLink');
                             }}
                             defaultValue={wasThereAUser}
                         />
@@ -103,7 +104,9 @@ const PickUsers = ({ setUser, setThread, inc, dec, forum }) => {
                             isInvalid={errors.thread}
                             onChange={(e) => {
                                 setWasThereAThread(e.target.checked);
-                                reset();
+                                resetField('thread');
+                                resetField('threadLink');
+                                resetField('threadUser');
                             }}
                         />
                         {errors.hasThread && (

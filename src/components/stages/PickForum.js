@@ -16,7 +16,7 @@ const PickForum = ({ setter, inc, forum, stage }) => {
                 <Image
                     src={logo}
                     bg='#333333'
-                    maxW='400px'
+                    w='100%'
                     p={3}
                     borderRadius='md'
                     alt='category logo'

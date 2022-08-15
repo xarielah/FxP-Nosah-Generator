@@ -1,8 +1,25 @@
 import { Box, Button, Flex, Link, Heading } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 
-const PmUsers = ({ weeklyUser, weeklyThread }) => {
+const PmUsers = ({ weeklyUser, weeklyThread, setShowCodeStatus }) => {
+    const [pmUser, setPmUser] = useState(!weeklyUser.length);
+    const [pmThread, setPmThread] = useState(!weeklyThread.length);
+    const [wording, setWording] = useState(
+        !weeklyThread.length || !weeklyUser.length,
+    );
+
     const pmLink = 'https://www.fxp.co.il/private.php?do=newpm&u=';
     const nosahim = 'https://www.fxp.co.il/showthread.php?t=21213781';
+
+    console.log(pmThread, pmUser, wording);
+
+    useEffect(() => {
+        console.log(pmThread, pmUser, wording);
+        if (pmUser && pmThread && wording) {
+            setShowCodeStatus(true);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pmUser, pmThread, wording]);
 
     function getUrl(url) {
         const urlObject = new URL('', url);
@@ -18,30 +35,65 @@ const PmUsers = ({ weeklyUser, weeklyThread }) => {
             <Flex
                 flexDirection={'column'}
                 gap={3}
-                bg='#333333'
+                bg='gray.100'
                 borderRadius={'md'}
                 py={5}
             >
-                <Heading color='white' size='md' textDecoration={'underline'}>
-                    קישורים מהירים:
+                <Heading color='red' size='md' textDecoration={'underline'}>
+                    לא לשכוח לשלוח הודעות פרטיות לזוכים!
                 </Heading>
-                <Link target='_blank' href={nosahim}>
-                    <Button colorScheme={'gray'} size='sm'>
-                        נוסח לשליחת הודעות פרטיות
-                    </Button>
-                </Link>
-                <Flex gap={2} justify={'center'}>
+                <Flex
+                    gap={2}
+                    justify={'center'}
+                    flexDirection='column'
+                    w='max-content'
+                    margin={'0 auto'}
+                >
+                    <Link
+                        _hover={{ textDecoration: 'none' }}
+                        target='_blank'
+                        href={nosahim}
+                        onClick={() => setWording(true)}
+                    >
+                        <Button
+                            colorScheme={`${!wording ? 'red' : 'messenger'}`}
+                            size='sm'
+                            w='100%'
+                        >
+                            נוסח לשליחת הודעות פרטיות {wording && '✔️'}
+                        </Button>
+                    </Link>
                     {weeklyUser.length > 0 && (
-                        <Link target='_blank' href={getUrl(weeklyUser[1])}>
-                            <Button colorScheme={'linkedin'} size='sm'>
-                                ה"פ למשקיען {weeklyUser[0]}
+                        <Link
+                            _hover={{ textDecoration: 'none' }}
+                            target='_blank'
+                            href={getUrl(weeklyUser[1])}
+                            onClick={() => setPmUser(true)}
+                        >
+                            <Button
+                                colorScheme={`${!pmUser ? 'red' : 'messenger'}`}
+                                size='sm'
+                                w='100%'
+                            >
+                                ה"פ למשקיען {weeklyUser[0]} {pmUser && '✔️'}
                             </Button>
                         </Link>
                     )}
                     {weeklyThread.length > 0 && (
-                        <Link target='_blank' href={getUrl(weeklyThread[2])}>
-                            <Button colorScheme={'linkedin'} size='sm'>
-                                ה"פ לפותח אשכול השבוע
+                        <Link
+                            _hover={{ textDecoration: 'none' }}
+                            target='_blank'
+                            href={getUrl(weeklyThread[2])}
+                            onClick={() => setPmThread(true)}
+                        >
+                            <Button
+                                colorScheme={`${
+                                    !pmThread ? 'red' : 'messenger'
+                                }`}
+                                size='sm'
+                                w='100%'
+                            >
+                                ה"פ לפותח אשכול השבוע {pmThread && '✔️'}
                             </Button>
                         </Link>
                     )}

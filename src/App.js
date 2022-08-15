@@ -1,5 +1,5 @@
 import { Container, Flex } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { PickForum, PickUsers, ShowCode } from './components/stages';
 
 function App() {

@@ -1,4 +1,7 @@
 export default function getBBCode(forum, weeklyUser, weeklyThread) {
+    const medalImage = 'https://images.weserv.nl/?url=i.imgur.com/ThPiUoI.png';
+    const winnerColor = '#daa520'; // if there is a single winner - this will be the font-color.
+    const grayColor = '#696969';
     return `[FONT=almoni-dl][CENTER][IMG]${forum.logo}[/IMG]
 [SIZE=5]
 [COLOR=#0099ff]אתגר שבועי:[/COLOR][/SIZE][COLOR=#0099ff]
@@ -23,15 +26,19 @@ export default function getBBCode(forum, weeklyUser, weeklyThread) {
 [SIZE=3][IMG]https://images.weserv.nl/?url=i.imgur.com/49v3iQt.png[/IMG][/SIZE]
 ${
     weeklyUser.length
-        ? `[URL="${weeklyUser[1]}"][COLOR=#696969][SIZE=5][B]${weeklyUser[0]}[/B][/SIZE][/COLOR][/URL]`
-        : `[COLOR=#696969][SIZE=5][B]לא נמצא השבוע משקיען[/B][/SIZE][/COLOR]`
+        ? `[IMG]${medalImage}[/IMG] [URL="${weeklyUser[1]}"][COLOR=${winnerColor}][SIZE=5][B]${weeklyUser[0]}[/B][/SIZE][/COLOR][/URL] [IMG]${medalImage}[/IMG]`
+        : `[IMG]${medalImage}[/IMG] [COLOR=${
+              weeklyUser.length || weeklyThread.length ? winnerColor : grayColor
+          }][SIZE=5][B]לא נמצא משקיען[/B][/SIZE][/COLOR] [IMG]${medalImage}[/IMG]`
 }
 
 [SIZE=3][IMG]https://images.weserv.nl/?url=i.imgur.com/Rb4j5af.png[/IMG][/SIZE]
 ${
     weeklyThread.length
-        ? `[URL="${weeklyThread[1]}"][COLOR=#696969][SIZE=5][B]${weeklyThread[0]}[/B][/SIZE][/COLOR][/URL]`
-        : `[COLOR=#696969][SIZE=5][B]לא נמצא השבוע אשכול[/B][/SIZE][/COLOR]`
+        ? `[IMG]${medalImage}[/IMG] [URL="${weeklyThread[1]}"][COLOR=${winnerColor}][SIZE=5][B]${weeklyThread[0]}[/B][/SIZE][/COLOR][/URL] [IMG]${medalImage}[/IMG]`
+        : `[IMG]${medalImage}[/IMG] [COLOR=${
+              weeklyUser.length || weeklyThread.length ? winnerColor : grayColor
+          }][SIZE=5][B]לא נמצא אשכול[/B][/SIZE][/COLOR] [IMG]${medalImage}[/IMG]`
 }
 
 [HR][/HR]
