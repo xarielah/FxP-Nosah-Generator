@@ -18,7 +18,7 @@ const forums = [
     {
         id: 3,
         name: 'GTA',
-        logo: 'https://i.imagesup.co/images2/43c9f3c027880568b7fe94abdbc6d82c07f08751.png',
+        logo: 'https://i.imagesup.co/images2/b0554633256fab6a0257e9540fb8b0796aadd590.png',
         href: 'https://www.fxp.co.il/forumdisplay.php?f=3839',
         mThread: 'https://www.fxp.co.il/showthread.php?t=21273988',
         thread: 'https://www.fxp.co.il/showthread.php?t=16495699',
