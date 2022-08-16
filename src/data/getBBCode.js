@@ -1,7 +1,11 @@
+import moment from 'moment';
+
 export default function getBBCode(forum, weeklyUser, weeklyThread) {
     const medalImage = 'https://images.weserv.nl/?url=i.imgur.com/ThPiUoI.png';
     const winnerColor = '#daa520'; // if there is a single winner - this will be the font-color.
     const grayColor = '#696969';
+    const nowDate = moment().format('DD/MM/YY');
+
     return `[FONT=almoni-dl][CENTER][IMG]${forum.logo}[/IMG]
 [SIZE=5]
 [COLOR=#0099ff]אתגר שבועי:[/COLOR][/SIZE][COLOR=#0099ff]
@@ -21,7 +25,7 @@ export default function getBBCode(forum, weeklyUser, weeklyThread) {
 [SIZE=3]- כינוי ותת-ניק מעוצבים (אל תדאגו, דאגנו לכם לעיצוב מעניין ;))[/SIZE]
 
 
-[B]בלי להוסיף מילה נוספת הזוכים או הזוכות השבוע הם/הן...[/B]
+[B]בלי להוסיף מילה נוספת הזוכים או הזוכות לתאריך [COLOR=#3399ff]${nowDate}[/COLOR] הם/הן...[/B]
 
 [SIZE=3][IMG]https://images.weserv.nl/?url=i.imgur.com/49v3iQt.png[/IMG][/SIZE]
 ${
