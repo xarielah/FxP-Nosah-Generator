@@ -28,7 +28,11 @@ const PickForum = ({ setter, inc, forum, stage }) => {
             <Text align='center' fontWeight='bold'>
                 קטגוריית משחקי פעולה
             </Text>
-            <Select my={4} onChange={(e) => onchange(e.target.value)}>
+            <Select
+                my={4}
+                onChange={(e) => onchange(e.target.value)}
+                bg={'#fafafa'}
+            >
                 {!forum && <option value={0}>בחר פורום מהרשימה</option>}
                 {forums.map((forum, index) => (
                     <option key={index} value={forum.id}>

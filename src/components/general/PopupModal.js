@@ -32,17 +32,13 @@ const PopupModal = ({
         <>
             {!hideButton && (
                 <Box textAlign={'center'}>
-                    <Text
-                        fontWeight={'bold'}
-                        textDecoration={'underline'}
-                        cursor={'pointer'}
-                        color={'gray.300'}
+                    <Button
                         onClick={onOpen}
-                        colorScheme={'blackAlpha'}
+                        colorScheme={'messenger'}
                         size={'sm'}
                     >
                         {buttonLabel}
-                    </Text>
+                    </Button>
                 </Box>
             )}
             <Modal isOpen={isOpen} onClose={onClose}>

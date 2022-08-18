@@ -11,9 +11,12 @@ const ShowCode = ({ weeklyUser, weeklyThread, forum }) => {
     const [showCodeStatus, setShowCodeStatus] = useState(
         weeklyThread.length || weeklyUser.length ? false : true,
     );
+    const [revealCode, setRevealCode] = useState(false);
 
     const fullText = getBBCode(forum, weeklyUser, weeklyThread);
     const copyText = () => navigator.clipboard.writeText(fullText);
+
+    const swapReveal = () => setRevealCode((prev) => !prev);
 
     const close = () => setOpen(false);
 
@@ -39,25 +42,43 @@ const ShowCode = ({ weeklyUser, weeklyThread, forum }) => {
                     p={5}
                     borderRadius='md'
                 >
-                    <Text>
+                    <Text fontWeight={'bold'}>
                         עלייך לשלוח קודם ה"פ לזוכים ולאחר מכן הקוד יופיע כאן.{' '}
                         {':)'}
                     </Text>
                 </Box>
             ) : (
                 <>
-                    <Button
-                        mb={3}
-                        size='sm'
-                        colorScheme={'messenger'}
-                        onClick={() => {
-                            copyText();
-                            setCopied(true);
-                        }}
-                    >
-                        {copied ? 'הנוסח הועתק בהצלחה! ✔️' : 'העתק נוסח ללוח'}
-                    </Button>
-                    <Textarea rows={10} value={fullText} readOnly />
+                    <Flex gap={2} flexDirection={{ base: 'row', md: 'column' }}>
+                        <Button
+                            mb={3}
+                            size='sm'
+                            colorScheme={'messenger'}
+                            onClick={() => {
+                                copyText();
+                                setCopied(true);
+                            }}
+                            w='100%'
+                        >
+                            {copied ? 'הקוד הועתק! ✔️' : 'העתק נוסח ללוח'}
+                        </Button>
+                        <Button
+                            colorScheme={'whatsapp'}
+                            size={'sm'}
+                            onClick={swapReveal}
+                            mb={revealCode ? 2 : 0}
+                            w='100%'
+                        >
+                            {revealCode ? 'הסתר קוד' : 'הצג קוד'}
+                        </Button>
+                    </Flex>
+                    {revealCode && (
+                        <Textarea
+                            rows={{ base: 8, md: 10 }}
+                            value={fullText}
+                            readOnly
+                        />
+                    )}
                     <Box align='center' mt={5}>
                         <Button
                             colorScheme='red'

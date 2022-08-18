@@ -5,7 +5,7 @@ const PmUsers = ({ weeklyUser, weeklyThread, setShowCodeStatus }) => {
     const [pmUser, setPmUser] = useState(!weeklyUser.length);
     const [pmThread, setPmThread] = useState(!weeklyThread.length);
     const [wording, setWording] = useState(
-        !weeklyThread.length || !weeklyUser.length,
+        !weeklyThread.length && !weeklyUser.length,
     );
 
     const pmLink = 'https://www.fxp.co.il/private.php?do=newpm&u=';

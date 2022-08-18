@@ -1,60 +1,59 @@
-import { Box, Container, Text, Link, Flex } from '@chakra-ui/react';
+import { Container, Flex, Link, Text } from '@chakra-ui/react';
 import Updates from '../general/Updates';
+import bg from '../../images/bg.jpg';
+import AnimationWrapper from './animation';
+import ContentAnimation from './contentAnimation';
 
 const MainLayout = ({ children }) => {
     return (
         <Flex
             flexDirection='column'
             h='100vh'
-            justify='space-between'
+            justify='center'
             align='center'
             as='main'
+            style={{
+                backgroundImage: `url('${bg}')`,
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+            }}
         >
-            <Container
-                maxW='container.md'
-                style={{
-                    border: '1px #cccccc55 solid',
-                    borderRadius: '8px',
-                    position: 'relative',
-                    top: '50%',
-                    transform: 'translateY(-60%)',
-                    width: '95%',
-                    padding: '2em 0',
-                }}
-            >
-                {children}
-                <Updates />
-            </Container>
-            <Box
-                w='100%'
-                mb={10}
-                bg={'#333333'}
-                p={10}
-                position={'absolute'}
-                top={'88vh'}
-            >
-                <Text
-                    align={'center'}
-                    fontWeight={'bold'}
-                    bg='white'
-                    w='max-content'
-                    margin='0 auto'
-                    py={2}
-                    px={4}
+            <AnimationWrapper>
+                <Container
+                    maxW='container.md'
+                    w={{ base: '90%', md: '100%' }}
+                    mb={{ base: 0, md: 14 }}
+                    py={10}
+                    border={'1px solid #fafafa55'}
                     borderRadius={'md'}
+                    bg={'#fafafa22'}
+                    backdropFilter={'blur(5px)'}
+                    boxShadow={'0 0 30px #33333322'}
                 >
-                    נבנה על ידי{' '}
-                    <Link
-                        textDecoration={'none'}
-                        target='_blank'
-                        color='#0000ff'
-                        href='https://www.fxp.co.il/member.php?u=749522'
+                    <ContentAnimation>{children}</ContentAnimation>
+                    {/* <Updates /> */}
+                    <Text
+                        textAlign={'center'}
+                        fontSize={'.7rem'}
+                        fontWeight={'bold'}
+                        color={'#3e3e3e'}
                     >
-                        Tony Black
-                    </Link>{' '}
-                    - אריאל
-                </Text>
-            </Box>
+                        תאריך עדכון אחרון: 18/08/22
+                    </Text>
+                    <Text textAlign={'center'} mt={5} mb={-5} opacity={0.7}>
+                        הכלי נוצר על ידי{' '}
+                        <Link
+                            color={'blue'}
+                            fontWeight={'bold'}
+                            href={'https://www.fxp.co.il/member.php?u=749522'}
+                            target={'_blank'}
+                            _hover={{ textDecoration: 'none' }}
+                        >
+                            Tony Black
+                        </Link>
+                    </Text>
+                </Container>
+            </AnimationWrapper>
         </Flex>
     );
 };

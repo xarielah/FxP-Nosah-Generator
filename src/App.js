@@ -1,5 +1,5 @@
-import { Container, Flex } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import { Container, Flex, Text, Progress } from '@chakra-ui/react';
+import { useState } from 'react';
 import { PickForum, PickUsers, ShowCode } from './components/stages';
 
 function App() {
@@ -16,6 +16,16 @@ function App() {
 
     return (
         <Container>
+            <Text textAlign={'center'}>
+                {stage !== 2 ? `שלב ${stage + 1}/3` : 'בהצלחה ותודה רבה ♥'}
+            </Text>
+            <Progress
+                boxShadow={'0 0 5px #33333355'}
+                borderRadius={'full'}
+                value={stage * 50}
+                size='xs'
+                colorScheme='messenger'
+            />
             <Flex flexDirection='column' gap={10} my={5}>
                 {stage === 0 && (
                     <PickForum

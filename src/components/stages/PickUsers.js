@@ -11,7 +11,6 @@ import {
 import PreviewForum from './PreviewForum';
 import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-
 const PickUsers = ({ setUser, setThread, inc, dec, forum }) => {
     const [wasThereAUser, setWasThereAUser] = useState(false);
     const [wasThereAThread, setWasThereAThread] = useState(false);
@@ -74,6 +73,7 @@ const PickUsers = ({ setUser, setThread, inc, dec, forum }) => {
                                             {...field}
                                             isInvalid={errors.user}
                                             placeholder='שם משתמש...'
+                                            bg={'#fafafa'}
                                         />
                                     )}
                                 />
@@ -89,6 +89,7 @@ const PickUsers = ({ setUser, setThread, inc, dec, forum }) => {
                                             {...field}
                                             isInvalid={errors.userLink}
                                             placeholder='קישור למשתמש...'
+                                            bg={'#fafafa'}
                                         />
                                     )}
                                 />
@@ -124,6 +125,7 @@ const PickUsers = ({ setUser, setThread, inc, dec, forum }) => {
                                         {...field}
                                         isInvalid={errors.thread}
                                         placeholder='שם האשכול...'
+                                        bg={'#fafafa'}
                                     />
                                 )}
                             />
@@ -139,6 +141,7 @@ const PickUsers = ({ setUser, setThread, inc, dec, forum }) => {
                                         {...field}
                                         isInvalid={errors.threadLink}
                                         placeholder='קישור לאשכול...'
+                                        bg={'#fafafa'}
                                     />
                                 )}
                             />
@@ -154,6 +157,7 @@ const PickUsers = ({ setUser, setThread, inc, dec, forum }) => {
                                         {...field}
                                         isInvalid={errors.threadUser}
                                         placeholder='קישור למשתמש פותח האשכול...'
+                                        bg={'#fafafa'}
                                     />
                                 )}
                             />
