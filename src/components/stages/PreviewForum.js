@@ -1,6 +1,10 @@
 import { Box, Image, Flex, Link, Text, Button } from '@chakra-ui/react';
+import { useState } from 'react';
 
-const PreviewForum = ({ forum }) => {
+const PreviewForum = ({ forum, highlightLink }) => {
+    const [firstClickedLink, setFirstClickedLink] = useState(false);
+    const [secondClickedLink, setSecondClickedLink] = useState(false);
+
     return (
         <Flex
             flexDirection={'column'}
@@ -39,8 +43,32 @@ const PreviewForum = ({ forum }) => {
                         href={forum.thread}
                         target={'_blank'}
                     >
-                        <Button colorScheme={'blackAlpha'} size='sm'>
-                            קישור לאתגר
+                        <Button
+                            border={
+                                highlightLink &&
+                                !firstClickedLink &&
+                                '2px solid red'
+                            }
+                            boxShadow={
+                                highlightLink &&
+                                !firstClickedLink &&
+                                '0 0 10px #fafafa'
+                            }
+                            colorScheme={
+                                highlightLink
+                                    ? `${
+                                          firstClickedLink
+                                              ? 'whatsapp'
+                                              : 'yellow'
+                                      }`
+                                    : 'blackAlpha'
+                            }
+                            size='sm'
+                            onClick={() => setFirstClickedLink(true)}
+                        >
+                            קישור לאתגר{' '}
+                            {highlightLink &&
+                                `${firstClickedLink ? '👌' : '✋'}`}
                         </Button>
                     </Link>
                     <Link
@@ -48,8 +76,35 @@ const PreviewForum = ({ forum }) => {
                         href={forum.mThread}
                         target={'_blank'}
                     >
-                        <Button colorScheme={'blackAlpha'} size='sm'>
-                            קישור לדיון על הזוכים
+                        <Button
+                            border={
+                                highlightLink &&
+                                firstClickedLink &&
+                                !secondClickedLink &&
+                                '2px solid red'
+                            }
+                            boxShadow={
+                                highlightLink &&
+                                firstClickedLink &&
+                                !secondClickedLink &&
+                                '0 0 10px #fafafa'
+                            }
+                            colorScheme={
+                                firstClickedLink && highlightLink
+                                    ? `${
+                                          secondClickedLink
+                                              ? 'whatsapp'
+                                              : 'yellow'
+                                      }`
+                                    : 'blackAlpha'
+                            }
+                            size='sm'
+                            onClick={() => setSecondClickedLink(true)}
+                        >
+                            קישור לדיון על הזוכים{' '}
+                            {firstClickedLink &&
+                                highlightLink &&
+                                `${secondClickedLink ? '👌' : '✋'}`}
                         </Button>
                     </Link>
                 </Flex>

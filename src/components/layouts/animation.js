@@ -6,7 +6,7 @@ const AnimationWrapper = ({ children }) => {
         <motion.article
             animate={{ y: 0 }}
             initial={{ y: -900 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 1, type: 'spring', bounce: 0.2 }}
         >
             {children}
         </motion.article>

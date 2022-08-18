@@ -11,8 +11,6 @@ const PmUsers = ({ weeklyUser, weeklyThread, setShowCodeStatus }) => {
     const pmLink = 'https://www.fxp.co.il/private.php?do=newpm&u=';
     const nosahim = 'https://www.fxp.co.il/showthread.php?t=21213781';
 
-    console.log(pmThread, pmUser, wording);
-
     useEffect(() => {
         console.log(pmThread, pmUser, wording);
         if (pmUser && pmThread && wording) {

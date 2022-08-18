@@ -23,7 +23,7 @@ const ShowCode = ({ weeklyUser, weeklyThread, forum }) => {
     return (
         <Flex justifyContent={'center'} flexDirection='column'>
             {isOpen && <Notes close={close} />}
-            <PreviewForum forum={forum} />
+            <PreviewForum forum={forum} highlightLink={showCodeStatus} />
 
             <Box align='center'>
                 {(weeklyThread.length > 0 || weeklyUser.length > 0) && (
