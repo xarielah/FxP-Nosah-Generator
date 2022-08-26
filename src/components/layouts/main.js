@@ -49,7 +49,7 @@ const MainLayout = ({ children }) => {
                             target={'_blank'}
                             _hover={{ textDecoration: 'none' }}
                         >
-                            Tony Black
+                            Middleware
                         </Link>
                     </Text>
                 </Container>
