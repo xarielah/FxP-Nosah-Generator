@@ -49,20 +49,26 @@ const ShowCode = ({ weeklyUser, weeklyThread, forum }) => {
                 </Box>
             ) : (
                 <>
-                    <Flex gap={2} flexDirection={{ base: 'row', md: 'column' }}>
+                    <Flex gap={2} justify={'center'}>
                         <Button
+                            borderRadius={'full'}
+                            maxW={'max-content'}
                             mb={3}
                             size='sm'
                             colorScheme={'messenger'}
                             onClick={() => {
-                                copyText();
-                                setCopied(true);
+                                copyText().then(() => {
+                                    window.open(forum.thread, '_blank');
+                                    setCopied(true);
+                                });
                             }}
                             w='100%'
                         >
-                            {copied ? 'הקוד הועתק! ✔️' : 'העתק נוסח ללוח'}
+                            {copied ? 'הקוד הועתק! ✔️' : 'העתק ופתח אשכול'}
                         </Button>
                         <Button
+                            borderRadius={'full'}
+                            maxW={'max-content'}
                             colorScheme={'whatsapp'}
                             size={'sm'}
                             onClick={swapReveal}
@@ -74,6 +80,7 @@ const ShowCode = ({ weeklyUser, weeklyThread, forum }) => {
                     </Flex>
                     {revealCode && (
                         <Textarea
+                            bg={'#fafafa55'}
                             rows={{ base: 8, md: 10 }}
                             value={fullText}
                             readOnly
@@ -81,6 +88,7 @@ const ShowCode = ({ weeklyUser, weeklyThread, forum }) => {
                     )}
                     <Box align='center' mt={5}>
                         <Button
+                            borderRadius={'full'}
                             colorScheme='red'
                             size='sm'
                             onClick={() => (window.location.href = '/')}

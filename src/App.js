@@ -15,7 +15,7 @@ function App() {
     const setThread = (str) => setWeeklyThread(str);
 
     return (
-        <Container>
+        <Container p={0}>
             <Text textAlign={'center'}>
                 {stage !== 2 ? `שלב ${stage + 1}/3` : 'בהצלחה ותודה רבה ♥'}
             </Text>

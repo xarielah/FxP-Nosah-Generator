@@ -29,6 +29,7 @@ const PickForum = ({ setter, inc, forum, stage }) => {
                 קטגוריית משחקי פעולה
             </Text>
             <Select
+                borderRadius={'full'}
                 my={4}
                 onChange={(e) => onchange(e.target.value)}
                 bg={'#fafafa'}

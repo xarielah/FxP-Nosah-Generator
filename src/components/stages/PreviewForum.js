@@ -10,29 +10,24 @@ const PreviewForum = ({ forum, highlightLink }) => {
             flexDirection={'column'}
             justify={'center'}
             align={'center'}
-            mb={5}
-            bg={'#33333388'}
+            bg={'#33333355'}
             color={'white'}
             py={3}
             px={1}
+            maxH={{ base: '200px', md: 'max-content' }}
             margin={'0 auto 2em'}
             boxShadow={'0 0 10px #33333377'}
             borderRadius={'md'}
         >
             <Box>
-                <Image src={forum.logo} w='20rem' maxW={'100%'} />
+                <Image
+                    src={forum.logo}
+                    w={{ base: '50%', md: '15em' }}
+                    maxW={'100%'}
+                    m={'0 auto'}
+                />
             </Box>
-            <Box>
-                <Text align='center' mb={3}>
-                    פורום שנבחר:{' '}
-                    <Link
-                        href={forum.href}
-                        target={'_blank'}
-                        fontWeight={'bold'}
-                    >
-                        {forum.name}
-                    </Link>
-                </Text>
+            <Flex flexDirection={'column'} gap={3} align={'center'}>
                 <Flex
                     gap={3}
                     flexDirection={{ base: 'column', sm: 'row' }}
@@ -40,43 +35,11 @@ const PreviewForum = ({ forum, highlightLink }) => {
                 >
                     <Link
                         _hover={{ textDecoration: 'none' }}
-                        href={forum.thread}
-                        target={'_blank'}
-                    >
-                        <Button
-                            border={
-                                highlightLink &&
-                                !firstClickedLink &&
-                                '2px solid red'
-                            }
-                            boxShadow={
-                                highlightLink &&
-                                !firstClickedLink &&
-                                '0 0 10px #fafafa'
-                            }
-                            colorScheme={
-                                highlightLink
-                                    ? `${
-                                          firstClickedLink
-                                              ? 'whatsapp'
-                                              : 'yellow'
-                                      }`
-                                    : 'blackAlpha'
-                            }
-                            size='sm'
-                            onClick={() => setFirstClickedLink(true)}
-                        >
-                            קישור לאתגר{' '}
-                            {highlightLink &&
-                                `${firstClickedLink ? '👌' : '✋'}`}
-                        </Button>
-                    </Link>
-                    <Link
-                        _hover={{ textDecoration: 'none' }}
                         href={forum.mThread}
                         target={'_blank'}
                     >
                         <Button
+                            borderRadius={'full'}
                             border={
                                 highlightLink &&
                                 firstClickedLink &&
@@ -108,7 +71,7 @@ const PreviewForum = ({ forum, highlightLink }) => {
                         </Button>
                     </Link>
                 </Flex>
-            </Box>
+            </Flex>
         </Flex>
     );
 };
